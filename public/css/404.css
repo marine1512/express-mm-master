@@ -1,0 +1,32 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.retour{
+    width: fit-content;
+    background-color: #0d2142;
+    border-radius: 50%;
+    color: white;
+    padding: 17px;
+    cursor: pointer;
+}
+
+.no > p > a{
+    font-weight: bold;
+    color: #f7ac1c;
+}
+
+.no{
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.no > p{
+    font-size: 3em;
+}
+

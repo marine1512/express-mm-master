@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/catways-reservations.css">
+  <title>
+    Réservations pour le Catway 
+  </title>
+</head>
+<body>
+  <%- include('partials/header2.ejs') %>  
+  <main>
+    <a href="/catways"><button class="retour">
+      Retour à la liste des Catways
+    </button></a>
+    <h2>Ajouter une Nouvelle Réservation</h2>
+        <form action="/catways/<%= catway._id %>/reservations" method="POST" class="crea">
+            <label for="clientName">Nom du Client :</label>
+            <input type="text" id="reservation" name="clientName" required>
+
+            <label for="boatName">Nom du Bateau :</label>
+            <input type="text" id="reservation" name="boatName" required>
+
+            <label for="checkIn">Date d'Arrivée :</label>
+            <input type="date" id="reservation" name="checkIn" required>
+
+            <label for="checkOut">Date de Départ :</label>
+            <input type="date" id="reservation" name="checkOut" required>
+
+            <button type="submit" class="button">Créer la Réservation</button>
+        </form>
+    <h2>Liste des réservations pour la catway</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Bateau</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (reservations.length > 0) { %>
+        <% reservations.forEach(reservation => { %>
+        <tr>
+          <td><%= reservation.clientName %></td>
+          <td><%= reservation.boatName %></td>
+          <td>
+            <a href="/catways/<%= catway._id %>/reservations/<%= reservation._id %>"><button class="button">Voir les détails</button></a>
+          </td>
+          <td>
+              <!-- Formulaire de suppression -->
+              <form action="/catways/<%= catway._id %>/reservations/<%= reservation._id %>?_method=DELETE" 
+                method="POST" 
+                onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette réservation ?');">
+                <button type="submit" class="button">Supprimer</button>
+              </form>
+          </td>
+        </tr>
+        <% }); %>
+        <% } else { %>
+        <tr>
+          <td>Aucune Reservation trouvée.</td>
+        </tr>
+      <% } %>
+      </tbody>
+    </table>
+  </main>
+      <!-- Inclusion du script JS -->
+      <script src="/javascript/catway_reservation.js"></script>
+
+  <%- include('partials/footer.ejs') %>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/catways-reservations.css">
+  <title>
+    Réservations
+  </title>
+</head>
+<body>
+  <%- include('partials/header2.ejs') %>  
+  <main>
+    <a href="/tableau"><button class="retour">
+        Retour au Tableau de bord
+    </button></a>
+    <h2>Liste des réservations</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Catway</th>
+          <th>Client</th>
+          <th>Bateau</th>
+          <th>CheckIn</th>
+          <th>CheckOut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (reservations.length > 0) { %>
+        <% reservations.forEach(reservation => { %>
+        <tr>
+          <td><%= reservation.catwayNumber %></td>
+          <td><%= reservation.clientName %></td>
+          <td><%= reservation.boatName %></td>
+          <td><%= new Date(reservation.checkIn).toLocaleDateString('fr-FR') %></td>
+          <td><%= new Date(reservation.checkOut).toLocaleDateString('fr-FR') %></td>
+        </tr>
+        <% }); %>
+        <% } else { %>
+        <tr>
+          <td colspan="4">Aucune Catway trouvée.</td>
+        </tr>
+      <% } %>
+      </tbody>
+    </table>
+  </main>
+  <%- include('partials/footer.ejs') %>
+</body>
+</html>

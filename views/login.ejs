@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Port de Plaisance</title>
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+    <main>
+        <h1>Page de connexion</h1>
+        <form action="/login" method="POST" id="loginForm">
+            <label>Pseudo: </label><input id="username" type="text" name="username" required />
+            <br>
+            <div class="password">
+                <label>Mot de passe: </label><input id="password" type="password" name="password" required />
+                <img src="/image/hide.png" alt="" onclick="passWord()" id="pass-icon">
+            </div>
+
+            <br>
+            <button type="submit">Se connecter</button>
+        </form>
+        <a href="/api-docs"><div class="api">
+            <p><u>Documentation de l'API</u></p>
+        </div></a>
+    </main>
+
+    <script src="/javascript/app.js"></script>
+
+    <%- include('partials/footer.ejs') %>
+</body>
+</html>
