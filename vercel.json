@@ -12,8 +12,8 @@
       "dest": "/server.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/public/swagger-ui-dist/$1"
+      "src": "/api-docs-static/(.*)",
+      "dest": "/swagger-ui-dist/$1"
     }
   ]
 }
