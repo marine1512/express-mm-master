@@ -4,11 +4,9 @@ const app = require('express')();
 // Exclure Swagger et ses fichiers statiques du middleware d'authentification
 app.use((req, res, next) => {
   if (
-    req.path.startsWith('/api-docs') ||
-    req.path.startsWith('/swagger.json') ||
-    req.path.startsWith('/api-docs-static'
-      
-    )
+    req.path.startsWith('/api-docs') || // Utilisation de || au lieu de ,
+    req.path.startsWith('/swagger.json') || 
+    req.path.startsWith('/api-docs-static')
   ) {
     return next(); // Passer directement à la route suivante
   }
@@ -16,11 +14,11 @@ app.use((req, res, next) => {
 });
 
 const authMiddleware = (req, res, next) => {
-    // Ignorer l'authentification en mode test
-    if (process.env.NODE_ENV === 'test') {
-      console.log('Middleware auth ignoré en mode test');
-      return next();
-    };
+  // Ignorer l'authentification en mode test
+  if (process.env.NODE_ENV === 'test') {
+    console.log('Middleware auth ignoré en mode test');
+    return next();
+  }
   const token = req.cookies.token; // Lire le token dans les cookies
 
   if (!token) {
