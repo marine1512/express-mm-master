@@ -12,7 +12,7 @@
       "dest": "/server.js"
     },
     {
-      "src": "/api-docs-static/(.*)",
+      "src": "/(.*)",
       "dest": "/public/swagger-ui-dist/$1"
     }
   ]
