@@ -10,10 +10,6 @@
     {
       "src": "/(.*)",
       "dest": "/server.js"
-    },
-    {
-      "src": "/api-docs-static/(.*)",
-      "dest": "/swagger-ui-dist/$1"
     }
   ]
 }

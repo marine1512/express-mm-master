@@ -1,7 +1,6 @@
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 const path = require('path');
-const swaggerUiAssetPath = require('swagger-ui-dist').absolutePath();
 const express = require('express');
 
 // Configuration des options Swagger
@@ -22,7 +21,8 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 // Middleware Swagger
 const swaggerMiddleware = (app) => {
   // Publiez les assets Swagger statiques
-  app.use('/api-docs-static', express.static(swaggerUiAssetPath));
+  const swaggerUiDirectory = require('swagger-ui-dist').absolutePath();
+  app.use('/api-docs-static', express.static(swaggerUiDirectory));
 
   // Configurez Swagger UI avec les fichiers statiques spécifiques
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, {
